@@ -1,7 +1,14 @@
+import React from "react";
+import NewsList from "./components/NewsList";
+import NewsState from "./context/news/NewsState";
 import "./App.css";
 
-function App() {
-  return <div className="App">Hello World</div>;
-}
+const App = () => {
+  return (
+    <NewsState>
+      <NewsList />
+    </NewsState>
+  );
+};
 
 export default App;
