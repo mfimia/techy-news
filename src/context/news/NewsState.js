@@ -1,13 +1,13 @@
 import { useReducer } from "react";
 import NewsContext from "./NewsContext";
 import NewsReducer from "./NewsReducer";
-import mockData from "../../data/hackernews.json";
 import { GET_NEWS, SEARCH_NEWS } from "../types";
 
 const NewsState = (props) => {
   const initialState = {
     news: null,
     error: null,
+    loading: true,
   };
 
   const [state, dispatch] = useReducer(NewsReducer, initialState);
@@ -15,8 +15,14 @@ const NewsState = (props) => {
   // Get news
   const getNews = async () => {
     try {
-      const res = await fetch("http://hn.algolia.com/api/v1/items/1");
-      console.log(res);
+      const res = await fetch(
+        "http://hn.algolia.com/api/v1/search_by_date?tags=story"
+      );
+      const newsData = await res.json();
+      dispatch({
+        type: GET_NEWS,
+        payload: newsData.hits,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -32,6 +38,7 @@ const NewsState = (props) => {
       value={{
         news: state.news,
         error: state.error,
+        loading: state.loading,
         getNews,
         searchNews,
       }}
