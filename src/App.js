@@ -1,5 +1,5 @@
 import React from "react";
-import NewsList from "./components/NewsList";
+import NewsList from "./components/news/NewsList";
 import NewsState from "./context/news/NewsState";
 import "./App.css";
 

@@ -1,5 +1,3 @@
-import React from "react";
-
 const NewsItem = ({ entry }) => {
   return (
     <div className="news--entry">

@@ -1,7 +1,8 @@
 import { useContext, useEffect, Fragment } from "react";
-import NewsContext from "../context/news/NewsContext";
+import NewsContext from "../../context/news/NewsContext";
 import NewsItem from "./NewsItem";
-import Spinner from "./Spinner";
+import NewsForm from "./NewsForm";
+import Spinner from "../Spinner";
 
 const NewsList = () => {
   const newsContext = useContext(NewsContext);
@@ -14,6 +15,7 @@ const NewsList = () => {
 
   return (
     <Fragment>
+      {!loading && <NewsForm />}
       {loading ? (
         <Spinner />
       ) : (
