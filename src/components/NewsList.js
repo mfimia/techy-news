@@ -1,12 +1,26 @@
-import { useContext } from "react";
+import { useContext, useEffect, Fragment } from "react";
 import NewsContext from "../context/news/NewsContext";
+import NewsItem from "./NewsItem";
+import Spinner from "./Spinner";
 
 const NewsList = () => {
   const newsContext = useContext(NewsContext);
-  const { getNews } = newsContext;
-  getNews();
+  const { getNews, news, loading } = newsContext;
 
-  return <div>I am the news list</div>;
+  useEffect(() => {
+    getNews();
+    // eslint-disable-next-line
+  }, []);
+
+  return (
+    <Fragment>
+      {loading ? (
+        <Spinner />
+      ) : (
+        news.map((item) => <NewsItem key={item.objectID} entry={item} />)
+      )}
+    </Fragment>
+  );
 };
 
 export default NewsList;
