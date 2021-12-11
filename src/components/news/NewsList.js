@@ -1,7 +1,6 @@
 import { useContext, useEffect, Fragment } from "react";
 import NewsContext from "../../context/news/NewsContext";
 import NewsItem from "./NewsItem";
-import NewsForm from "./NewsForm";
 import Spinner from "../layout/Spinner";
 
 const NewsList = () => {
@@ -15,7 +14,6 @@ const NewsList = () => {
 
   return (
     <Fragment>
-      {!loading && <NewsForm />}
       {loading ? (
         <Spinner />
       ) : (
