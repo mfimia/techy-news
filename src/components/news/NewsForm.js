@@ -1,5 +1,14 @@
+import TextField from "@mui/material/TextField";
+
 const NewsForm = () => {
-  return <div>I am the news form</div>;
+  return (
+    <TextField
+      id="filled-search"
+      label="Search news"
+      type="search"
+      variant="outlined"
+    />
+  );
 };
 
 export default NewsForm;

@@ -1,13 +1,19 @@
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import { Link } from "@mui/material";
+
 const NewsItem = ({ entry }) => {
   return (
-    <div className="news--entry">
-      <h4>
-        <a href={entry.url}>{entry.title}</a>
-      </h4>
-      <p>
-        {entry.points} points by {entry.author}
-      </p>
-    </div>
+    <ListItem>
+      <ListItemText
+        primary={
+          <Link underline="none" href={entry.url}>
+            {entry.title}
+          </Link>
+        }
+        secondary={`${entry.points} points by ${entry.author}`}
+      ></ListItemText>
+    </ListItem>
   );
 };
 

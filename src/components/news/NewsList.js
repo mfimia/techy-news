@@ -2,7 +2,7 @@ import { useContext, useEffect, Fragment } from "react";
 import NewsContext from "../../context/news/NewsContext";
 import NewsItem from "./NewsItem";
 import NewsForm from "./NewsForm";
-import Spinner from "../Spinner";
+import Spinner from "../layout/Spinner";
 
 const NewsList = () => {
   const newsContext = useContext(NewsContext);
