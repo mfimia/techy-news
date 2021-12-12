@@ -54,7 +54,6 @@ const NewsForm = () => {
       <StyledTextField
         id="filled-search"
         label="Search news"
-        type="search"
         variant="outlined"
         size="small"
         value={value}
@@ -66,7 +65,7 @@ const NewsForm = () => {
         }}
       />
       <Button variant="text" onClick={handleSubmit}>
-        <SearchIcon fontSize="medium" color="action" />
+        <SearchIcon fontSize="medium" style={{ fill: "white" }} />
       </Button>
     </Box>
   );
