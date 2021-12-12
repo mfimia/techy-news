@@ -5,9 +5,9 @@ import { GET_NEWS, LOAD, SEARCH_NEWS } from "../types";
 
 const NewsState = (props) => {
   const initialState = {
-    news: [],
-    error: null,
+    news: {},
     loading: true,
+    input: "tags=front_page",
   };
 
   const [state, dispatch] = useReducer(NewsReducer, initialState);
@@ -21,7 +21,7 @@ const NewsState = (props) => {
       const newsData = await res.json();
       dispatch({
         type: GET_NEWS,
-        payload: newsData.hits,
+        payload: { news: newsData },
       });
     } catch (err) {
       console.log(err);
@@ -38,7 +38,10 @@ const NewsState = (props) => {
       const searchData = await res.json();
       dispatch({
         type: SEARCH_NEWS,
-        payload: searchData.hits,
+        payload: {
+          news: searchData,
+          input: input,
+        },
       });
     } catch (err) {
       console.log(err);
@@ -49,7 +52,7 @@ const NewsState = (props) => {
     <NewsContext.Provider
       value={{
         news: state.news,
-        error: state.error,
+        input: state.input,
         loading: state.loading,
         getNews,
         searchNews,

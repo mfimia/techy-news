@@ -6,8 +6,9 @@ const NewsReducer = (state, action) => {
     case SEARCH_NEWS:
       return {
         ...state,
-        news: action.payload,
+        news: action.payload.news,
         loading: false,
+        input: action.payload.input,
       };
     case LOAD:
       return {

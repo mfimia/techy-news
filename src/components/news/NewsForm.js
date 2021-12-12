@@ -26,13 +26,18 @@ const StyledTextField = styled(TextField)`
 const NewsForm = () => {
   const newsContext = useContext(NewsContext);
   const alertContext = useContext(AlertContext);
+
   const { searchNews, news, loading } = newsContext;
   const { setAlert, clearAlert } = alertContext;
+
+  const { hits } = news;
+
   const [value, setValue] = useState("");
 
   const handleChange = (e) => {
     setValue(e.target.value);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     clearAlert();
@@ -42,11 +47,11 @@ const NewsForm = () => {
   };
 
   useEffect(() => {
-    if (news.length === 0 && !loading) {
+    if (!hits && !loading) {
       setAlert("No results found. Please try something else", "error");
     }
     // eslint-disable-next-line
-  }, [news.length, searchNews]);
+  }, [hits, searchNews]);
 
   return (
     <Box
