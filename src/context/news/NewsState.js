@@ -1,7 +1,13 @@
 import { useReducer } from "react";
 import NewsContext from "./NewsContext";
 import NewsReducer from "./NewsReducer";
-import { GET_NEWS, LOAD, SEARCH_NEWS, CHANGE_PAGE, RESET_PAGE } from "../types";
+import {
+  GET_NEWS,
+  LOAD,
+  SEARCH_NEWS,
+  CHANGE_PAGE,
+  CHANGE_INPUT,
+} from "../types";
 
 const NewsState = (props) => {
   const initialState = {
@@ -9,7 +15,6 @@ const NewsState = (props) => {
     loading: true,
     input: "tags=front_page",
     currentPage: 0,
-    reset: false,
   };
 
   const [state, dispatch] = useReducer(NewsReducer, initialState);
@@ -53,6 +58,14 @@ const NewsState = (props) => {
     }
   };
 
+  // Change input
+  const changeInput = (input) => {
+    dispatch({
+      type: CHANGE_INPUT,
+      payload: input,
+    });
+  };
+
   // Change page
   const changePage = (page) => {
     dispatch({
@@ -64,7 +77,7 @@ const NewsState = (props) => {
   // Reset pages
   const resetPages = () => {
     dispatch({
-      type: RESET_PAGE,
+      type: CHANGE_PAGE,
       payload: 0,
     });
   };
@@ -76,11 +89,11 @@ const NewsState = (props) => {
         input: state.input,
         loading: state.loading,
         currentPage: state.currentPage,
-        reset: state.reset,
         getNews,
         searchNews,
         changePage,
         resetPages,
+        changeInput,
       }}
     >
       {props.children}

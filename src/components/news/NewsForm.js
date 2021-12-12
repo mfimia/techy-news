@@ -27,7 +27,7 @@ const NewsForm = () => {
   const newsContext = useContext(NewsContext);
   const alertContext = useContext(AlertContext);
 
-  const { searchNews, news, loading, resetPages, currentPage } = newsContext;
+  const { searchNews, news, loading, resetPages, changeInput } = newsContext;
   const { setAlert, clearAlert } = alertContext;
 
   const { hits } = news;
@@ -40,25 +40,17 @@ const NewsForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    resetPages();
-    clearAlert();
-    value
-      ? searchNews(value, currentPage)
-      : setAlert("Please write something!", "warning", true);
-    console.log("handle submit requested update");
+    if (value) {
+      resetPages();
+      clearAlert();
+      changeInput(value);
+    } else {
+      setAlert("Please write something!", "warning", true);
+    }
   };
 
-  // useEffect(() => {
-  //   if (!loading) {
-  //     value
-  //       ? searchNews(value, currentPage)
-  //       : setAlert("Please write something!", "warning", true);
-  //   }
-  //   // eslint-disable-next-line
-  // }, [currentPage, reset]);
-
   useEffect(() => {
-    if (!hits && !loading) {
+    if (!hits.length && !loading) {
       setAlert("No results found. Please try something else", "error");
     }
     // eslint-disable-next-line

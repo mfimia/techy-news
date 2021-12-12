@@ -7,16 +7,9 @@ import { Pagination } from "@mui/material";
 
 const NewsList = () => {
   const newsContext = useContext(NewsContext);
-  const {
-    getNews,
-    news,
-    loading,
-    input,
-    searchNews,
-    currentPage,
-    changePage,
-    reset,
-  } = newsContext;
+
+  const { getNews, news, loading, input, searchNews, currentPage, changePage } =
+    newsContext;
 
   const { hits, nbPages } = news;
 
@@ -25,15 +18,11 @@ const NewsList = () => {
   };
 
   useEffect(() => {
-    console.log(reset);
-    if (!reset) {
-      input === "tags=front_page"
-        ? getNews(currentPage)
-        : searchNews(input, currentPage);
-    }
-    console.log("use effect requested update");
+    input === "tags=front_page"
+      ? getNews(currentPage)
+      : searchNews(input, currentPage);
     // eslint-disable-next-line
-  }, [currentPage]);
+  }, [currentPage, input]);
 
   return (
     <Fragment>

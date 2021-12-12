@@ -1,4 +1,10 @@
-import { GET_NEWS, SEARCH_NEWS, LOAD, CHANGE_PAGE, RESET_PAGE } from "../types";
+import {
+  GET_NEWS,
+  SEARCH_NEWS,
+  LOAD,
+  CHANGE_PAGE,
+  CHANGE_INPUT,
+} from "../types";
 
 const NewsReducer = (state, action) => {
   switch (action.type) {
@@ -16,11 +22,10 @@ const NewsReducer = (state, action) => {
         currentPage: action.payload,
         reset: false,
       };
-    case RESET_PAGE:
+    case CHANGE_INPUT:
       return {
         ...state,
-        currentPage: action.payload,
-        reset: true,
+        input: action.payload,
       };
     case GET_NEWS:
       return {
