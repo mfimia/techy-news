@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import NewsContext from "./NewsContext";
 import NewsReducer from "./NewsReducer";
-import { GET_NEWS, SEARCH_NEWS } from "../types";
+import { GET_NEWS, LOAD, SEARCH_NEWS } from "../types";
 
 const NewsState = (props) => {
   const initialState = {
@@ -29,8 +29,20 @@ const NewsState = (props) => {
   };
 
   // Search news
-  const searchNews = () => {
-    console.log("search news function");
+  const searchNews = async (input) => {
+    dispatch({ type: LOAD });
+    try {
+      const res = await fetch(
+        `http://hn.algolia.com/api/v1/search?query=${input}&tags=story`
+      );
+      const searchData = await res.json();
+      dispatch({
+        type: SEARCH_NEWS,
+        payload: searchData.hits,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

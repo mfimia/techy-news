@@ -1,15 +1,18 @@
 import TextField from "@mui/material/TextField";
 import { Box } from "@mui/system";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import NewsContext from "../../context/news/NewsContext";
 
 const NewsForm = () => {
+  const newsContext = useContext(NewsContext);
+  const { searchNews } = newsContext;
   const [value, setValue] = useState("");
   const handleChange = (e) => setValue(e.target.value);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted");
+    searchNews(value);
   };
 
   return (

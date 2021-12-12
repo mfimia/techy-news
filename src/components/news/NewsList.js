@@ -5,10 +5,11 @@ import Spinner from "../layout/Spinner";
 
 const NewsList = () => {
   const newsContext = useContext(NewsContext);
-  const { getNews, news, loading } = newsContext;
+  const { getNews, news, loading, searchNews } = newsContext;
 
   useEffect(() => {
     getNews();
+    searchNews();
     // eslint-disable-next-line
   }, []);
 
