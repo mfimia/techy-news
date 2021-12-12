@@ -6,7 +6,7 @@ import AlertMessage from "../layout/AlertMessage";
 
 const NewsList = () => {
   const newsContext = useContext(NewsContext);
-  const { getNews, news, loading, searchNews } = newsContext;
+  const { getNews, news, loading } = newsContext;
 
   useEffect(() => {
     getNews();
