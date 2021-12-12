@@ -16,7 +16,7 @@ const NewsState = (props) => {
   const getNews = async () => {
     try {
       const res = await fetch(
-        "http://hn.algolia.com/api/v1/search_by_date?tags=story"
+        "http://hn.algolia.com/api/v1/search?tags=front_page"
       );
       const newsData = await res.json();
       dispatch({
