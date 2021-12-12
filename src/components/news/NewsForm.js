@@ -62,9 +62,17 @@ const NewsForm = () => {
           input: {
             color: "white",
           },
+          right: {
+            xs: "10%",
+            sm: "0",
+          },
         }}
       />
-      <Button variant="text" onClick={handleSubmit}>
+      <Button
+        variant="text"
+        onClick={handleSubmit}
+        sx={{ display: { xs: "none", sm: "inline-flex" } }}
+      >
         <SearchIcon fontSize="medium" style={{ fill: "white" }} />
       </Button>
     </Box>
