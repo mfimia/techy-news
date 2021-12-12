@@ -4,15 +4,19 @@ import { useState, useContext } from "react";
 import { Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import NewsContext from "../../context/news/NewsContext";
+import AlertContext from "../../context/alert/AlertContext";
 
 const NewsForm = () => {
   const newsContext = useContext(NewsContext);
+  const alertContext = useContext(AlertContext);
   const { searchNews } = newsContext;
   const [value, setValue] = useState("");
   const handleChange = (e) => setValue(e.target.value);
   const handleSubmit = (e) => {
     e.preventDefault();
-    searchNews(value);
+    value
+      ? searchNews(value)
+      : alertContext.setAlert("Please write something!");
   };
 
   return (

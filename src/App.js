@@ -1,14 +1,16 @@
-import React from "react";
 import NewsList from "./components/news/NewsList";
 import NewsState from "./context/news/NewsState";
-import "./App.css";
 import Navbar from "./components/layout/Navbar";
+import AlertState from "./context/alert/AlertState";
+import "./App.css";
 
 const App = () => {
   return (
     <NewsState>
-      <Navbar />
-      <NewsList />
+      <AlertState>
+        <Navbar />
+        <NewsList />
+      </AlertState>
     </NewsState>
   );
 };
