@@ -5,7 +5,7 @@ import { GET_NEWS, LOAD, SEARCH_NEWS } from "../types";
 
 const NewsState = (props) => {
   const initialState = {
-    news: null,
+    news: [],
     error: null,
     loading: true,
   };

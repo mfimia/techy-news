@@ -1,6 +1,6 @@
 import TextField from "@mui/material/TextField";
 import { Box } from "@mui/system";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import NewsContext from "../../context/news/NewsContext";
@@ -26,15 +26,27 @@ const StyledTextField = styled(TextField)`
 const NewsForm = () => {
   const newsContext = useContext(NewsContext);
   const alertContext = useContext(AlertContext);
-  const { searchNews } = newsContext;
+  const { searchNews, news, loading } = newsContext;
+  const { setAlert, clearAlert } = alertContext;
   const [value, setValue] = useState("");
-  const handleChange = (e) => setValue(e.target.value);
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+    clearAlert();
     value
       ? searchNews(value)
-      : alertContext.setAlert("Please write something!");
+      : setAlert("Please write something!", "warning", true);
   };
+
+  useEffect(() => {
+    if (news.length === 0 && !loading) {
+      setAlert("No results found. Please try something else", "error");
+    }
+    // eslint-disable-next-line
+  }, [news.length, searchNews]);
 
   return (
     <Box
