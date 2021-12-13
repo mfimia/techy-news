@@ -11,8 +11,17 @@ const NewsList = () => {
   const newsContext = useContext(NewsContext);
   const alertContext = useContext(AlertContext);
 
-  const { getNews, news, loading, input, searchNews, currentPage, changePage } =
-    newsContext;
+  const {
+    getNews,
+    news,
+    loading,
+    input,
+    searchNews,
+    currentPage,
+    changePage,
+    sort,
+  } = newsContext;
+
   const { setAlert, clearAlert } = alertContext;
 
   const { hits, nbPages } = news;
@@ -24,12 +33,12 @@ const NewsList = () => {
   useEffect(() => {
     input === "tags=front_page"
       ? getNews(currentPage)
-      : searchNews(input, currentPage);
+      : searchNews(input, currentPage, sort);
     !hits &&
       !loading &&
       setAlert("No results found. Please try something else", "error");
     // eslint-disable-next-line
-  }, [currentPage, input]);
+  }, [currentPage, input, sort]);
 
   useEffect(() => {
     if (!loading && hits.length === 0) {

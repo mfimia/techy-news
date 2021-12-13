@@ -1,10 +1,19 @@
+import { useContext } from "react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import NewsContext from "../../context/news/NewsContext";
 
 const RowRadioButtonsGroup = () => {
+  const newsContext = useContext(NewsContext);
+  const { changeSort, sort } = newsContext;
+
+  const handleChange = (e) => {
+    changeSort(e.target.value);
+  };
+
   return (
     <FormControl style={{ float: "right" }} sx={{ mt: 1 }} component="fieldset">
       <FormLabel
@@ -25,14 +34,24 @@ const RowRadioButtonsGroup = () => {
       >
         Sort by:
       </FormLabel>
-      <RadioGroup row aria-label="gender" name="row-radio-buttons-group">
-        <FormControlLabel value="points" control={<Radio />} label="Points" />
-        <FormControlLabel
+      <RadioGroup
+        row
+        aria-label="gender"
+        name="row-radio-buttons-group"
+        value={sort}
+        onChange={handleChange}
+      >
+        <FormControlLabel value="search" control={<Radio />} label="Points" />
+        {/* <FormControlLabel
           value="comments"
           control={<Radio />}
           label="Comments"
+        /> */}
+        <FormControlLabel
+          value="search_by_date"
+          control={<Radio />}
+          label="Date"
         />
-        <FormControlLabel value="date" control={<Radio />} label="Date" />
       </RadioGroup>
     </FormControl>
   );

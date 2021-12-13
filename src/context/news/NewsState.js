@@ -7,6 +7,7 @@ import {
   SEARCH_NEWS,
   CHANGE_PAGE,
   CHANGE_INPUT,
+  CHANGE_SORT,
 } from "../types";
 
 const NewsState = (props) => {
@@ -15,6 +16,7 @@ const NewsState = (props) => {
     loading: true,
     input: "tags=front_page",
     currentPage: 0,
+    sort: "search",
   };
 
   const [state, dispatch] = useReducer(NewsReducer, initialState);
@@ -37,11 +39,15 @@ const NewsState = (props) => {
   };
 
   // Search news
-  const searchNews = async (input, page = state.currentPage) => {
+  const searchNews = async (
+    input,
+    page = state.currentPage,
+    sort = state.sort
+  ) => {
     dispatch({ type: LOAD });
     try {
       const res = await fetch(
-        `http://hn.algolia.com/api/v1/search?query=${input}&tags=story&page=${page}`
+        `http://hn.algolia.com/api/v1/${sort}?query=${input}&tags=story&page=${page}`
       );
       const searchData = await res.json();
       dispatch({
@@ -54,6 +60,14 @@ const NewsState = (props) => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  // Change sort
+  const changeSort = (sort) => {
+    dispatch({
+      type: CHANGE_SORT,
+      payload: sort,
+    });
   };
 
   // Change input
@@ -87,11 +101,13 @@ const NewsState = (props) => {
         input: state.input,
         loading: state.loading,
         currentPage: state.currentPage,
+        sort: state.sort,
         getNews,
         searchNews,
         changePage,
         resetPages,
         changeInput,
+        changeSort,
       }}
     >
       {props.children}

@@ -4,6 +4,7 @@ import {
   LOAD,
   CHANGE_PAGE,
   CHANGE_INPUT,
+  CHANGE_SORT,
 } from "../types";
 
 const NewsReducer = (state, action) => {
@@ -24,6 +25,11 @@ const NewsReducer = (state, action) => {
       return {
         ...state,
         input: action.payload,
+      };
+    case CHANGE_SORT:
+      return {
+        ...state,
+        sort: action.payload,
       };
     case GET_NEWS:
       return {
