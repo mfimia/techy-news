@@ -32,7 +32,7 @@ const NewsList = () => {
 
   useEffect(() => {
     input === "tags=front_page"
-      ? getNews(currentPage)
+      ? getNews(currentPage, sort)
       : searchNews(input, currentPage, sort);
     !hits &&
       !loading &&
