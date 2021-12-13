@@ -8,8 +8,19 @@ const RowRadioButtonsGroup = () => {
   return (
     <FormControl style={{ float: "right" }} sx={{ mt: 1 }} component="fieldset">
       <FormLabel
-        sx={{ mr: 2 }}
-        style={{ textAlign: "right" }}
+        sx={{
+          mr: 2,
+          display: {
+            xs: "none",
+            sm: "block",
+          },
+        }}
+        style={{
+          textAlign: "right",
+          position: "absolute",
+          transform: "translate(-140%, -50%)",
+          top: "50%",
+        }}
         component="legend"
       >
         Sort by:
