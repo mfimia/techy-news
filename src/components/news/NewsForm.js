@@ -1,8 +1,6 @@
 import TextField from "@mui/material/TextField";
 import { Box } from "@mui/system";
 import { useState, useContext } from "react";
-import { Button } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import NewsContext from "../../context/news/NewsContext";
 import AlertContext from "../../context/alert/AlertContext";
 import styled from "styled-components";
@@ -47,13 +45,6 @@ const NewsForm = () => {
     }
   };
 
-  // useEffect(() => {
-  //   if (!hits.length && !loading) {
-  //     setAlert("No results found. Please try something else", "error");
-  //   }
-  //   // eslint-disable-next-line
-  // }, [hits, searchNews]);
-
   return (
     <Box
       component="form"
@@ -80,19 +71,9 @@ const NewsForm = () => {
           input: {
             color: "white",
           },
-          right: {
-            xs: "10%",
-            sm: "0",
-          },
+          right: "10%",
         }}
       />
-      <Button
-        variant="text"
-        onClick={handleSubmit}
-        sx={{ display: { xs: "none", sm: "inline-flex" } }}
-      >
-        <SearchIcon fontSize="medium" style={{ fill: "white" }} />
-      </Button>
     </Box>
   );
 };

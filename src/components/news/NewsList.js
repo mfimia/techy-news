@@ -54,6 +54,8 @@ const NewsList = () => {
           page={currentPage + 1}
           onChange={handleChange}
           color="primary"
+          size="large"
+          sx={{ mb: 6 }}
         />
       )}
     </Fragment>

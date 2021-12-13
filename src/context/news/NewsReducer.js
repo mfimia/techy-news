@@ -14,13 +14,11 @@ const NewsReducer = (state, action) => {
         news: action.payload.news,
         loading: false,
         input: action.payload.input,
-        reset: false,
       };
     case CHANGE_PAGE:
       return {
         ...state,
         currentPage: action.payload,
-        reset: false,
       };
     case CHANGE_INPUT:
       return {
@@ -32,7 +30,6 @@ const NewsReducer = (state, action) => {
         ...state,
         news: action.payload.news,
         loading: false,
-        reset: false,
       };
     case LOAD:
       return {
