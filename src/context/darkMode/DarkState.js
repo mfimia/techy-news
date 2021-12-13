@@ -5,10 +5,12 @@ const DarkState = (props) => {
   const [darkMode, setDarkMode] = useState(false);
 
   // Toggle dark mode
-  setDarkMode((prev) => !prev);
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => !prev);
+  };
 
   return (
-    <DarkContext.Provider value={{ darkMode, setDarkMode }}>
+    <DarkContext.Provider value={{ darkMode, toggleDarkMode }}>
       {props.children}
     </DarkContext.Provider>
   );

@@ -55,8 +55,6 @@ const NewsForm = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",
-        position: "absolute",
-        right: "0",
         textColor: "white",
       }}
     >
@@ -71,7 +69,6 @@ const NewsForm = () => {
           input: {
             color: "white",
           },
-          right: "10%",
         }}
       />
     </Box>

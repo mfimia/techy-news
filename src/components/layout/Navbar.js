@@ -13,10 +13,10 @@ import { useContext } from "react";
 const Navbar = () => {
   const darkContext = useContext(DarkContext);
 
-  const { darkMode, setDarkMode } = darkContext;
+  const { darkMode, toggleDarkMode } = darkContext;
 
   const handleClick = () => {
-    setDarkMode();
+    toggleDarkMode();
   };
 
   return (
@@ -44,7 +44,7 @@ const Navbar = () => {
             TECHY NEWS
           </Typography>
           <NewsForm />
-          <IconButton sx={{ ml: 1 }} onClick={handleClick}>
+          <IconButton sx={{ ml: 2 }} onClick={handleClick} color="inherit">
             {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
         </Toolbar>
