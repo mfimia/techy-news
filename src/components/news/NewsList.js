@@ -5,6 +5,7 @@ import Spinner from "../layout/Spinner";
 import AlertMessage from "../layout/AlertMessage";
 import { Pagination } from "@mui/material";
 import AlertContext from "../../context/alert/AlertContext";
+import RowRadioButtonsGroup from "../layout/RowRadioButtonsGroup";
 
 const NewsList = () => {
   const newsContext = useContext(NewsContext);
@@ -43,6 +44,7 @@ const NewsList = () => {
   return (
     <Fragment>
       <AlertMessage />
+      {!loading && hits.length !== 0 && <RowRadioButtonsGroup />}
       {loading ? (
         <Spinner />
       ) : (
@@ -55,7 +57,7 @@ const NewsList = () => {
           onChange={handleChange}
           color="primary"
           size="large"
-          sx={{ mb: 6 }}
+          sx={{ mb: 6, mt: 2 }}
         />
       )}
     </Fragment>
