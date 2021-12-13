@@ -22,11 +22,11 @@ const NewsState = (props) => {
   const [state, dispatch] = useReducer(NewsReducer, initialState);
 
   // Get news
-  const getNews = async (page = state.currentPage) => {
+  const getNews = async (page = state.currentPage, sort = state.sort) => {
     dispatch({ type: LOAD });
     try {
       const res = await fetch(
-        `http://hn.algolia.com/api/v1/search?${state.input}&page=${page}`
+        `http://hn.algolia.com/api/v1/${sort}?${state.input}&page=${page}`
       );
       const newsData = await res.json();
       dispatch({

@@ -27,7 +27,7 @@ const RowRadioButtonsGroup = () => {
         style={{
           textAlign: "right",
           position: "absolute",
-          transform: "translate(-140%, -50%)",
+          transform: "translate(-130%, -50%)",
           top: "50%",
         }}
         component="legend"
@@ -42,15 +42,10 @@ const RowRadioButtonsGroup = () => {
         onChange={handleChange}
       >
         <FormControlLabel value="search" control={<Radio />} label="Points" />
-        {/* <FormControlLabel
-          value="comments"
-          control={<Radio />}
-          label="Comments"
-        /> */}
         <FormControlLabel
           value="search_by_date"
           control={<Radio />}
-          label="Date"
+          label="Newest"
         />
       </RadioGroup>
     </FormControl>
