@@ -27,7 +27,6 @@ const NewsState = (props) => {
         `http://hn.algolia.com/api/v1/search?${state.input}&page=${page}`
       );
       const newsData = await res.json();
-      console.log(newsData, state.input);
       dispatch({
         type: GET_NEWS,
         payload: { news: newsData },
@@ -45,7 +44,6 @@ const NewsState = (props) => {
         `http://hn.algolia.com/api/v1/search?query=${input}&tags=story&page=${page}`
       );
       const searchData = await res.json();
-      console.log(searchData, state.input);
       dispatch({
         type: SEARCH_NEWS,
         payload: {

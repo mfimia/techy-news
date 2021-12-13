@@ -4,12 +4,15 @@ import NewsItem from "./NewsItem";
 import Spinner from "../layout/Spinner";
 import AlertMessage from "../layout/AlertMessage";
 import { Pagination } from "@mui/material";
+import AlertContext from "../../context/alert/AlertContext";
 
 const NewsList = () => {
   const newsContext = useContext(NewsContext);
+  const alertContext = useContext(AlertContext);
 
   const { getNews, news, loading, input, searchNews, currentPage, changePage } =
     newsContext;
+  const { setAlert, clearAlert } = alertContext;
 
   const { hits, nbPages } = news;
 
@@ -21,8 +24,21 @@ const NewsList = () => {
     input === "tags=front_page"
       ? getNews(currentPage)
       : searchNews(input, currentPage);
+    !hits &&
+      !loading &&
+      setAlert("No results found. Please try something else", "error");
     // eslint-disable-next-line
   }, [currentPage, input]);
+
+  useEffect(() => {
+    if (!loading && hits.length === 0) {
+      setAlert("No results found. Please try something else", "error");
+    }
+    if (loading) {
+      clearAlert();
+    }
+    // eslint-disable-next-line
+  }, [searchNews]);
 
   return (
     <Fragment>
@@ -32,7 +48,7 @@ const NewsList = () => {
       ) : (
         hits.map((hit) => <NewsItem key={hit.objectID} entry={hit} />)
       )}
-      {!loading && (
+      {!loading && hits.length !== 0 && (
         <Pagination
           count={nbPages}
           page={currentPage + 1}
