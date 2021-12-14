@@ -53,6 +53,17 @@ const NewsList = () => {
   return (
     <Fragment>
       <AlertMessage />
+      {!loading && hits.length !== 0 && (
+        <Pagination
+          count={nbPages}
+          page={currentPage + 1}
+          onChange={handleChange}
+          color="primary"
+          size="medium"
+          sx={{ mt: 2 }}
+          style={{ position: "absolute" }}
+        />
+      )}
       {!loading && hits.length !== 0 && <RowRadioButtonsGroup />}
       {loading ? (
         <CircularIndeterminate />
