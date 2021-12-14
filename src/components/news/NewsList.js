@@ -1,11 +1,11 @@
 import { useContext, useEffect, Fragment } from "react";
 import NewsContext from "../../context/news/NewsContext";
 import NewsItem from "./NewsItem";
-import Spinner from "../layout/Spinner";
 import AlertMessage from "../layout/AlertMessage";
 import { Pagination } from "@mui/material";
 import AlertContext from "../../context/alert/AlertContext";
 import RowRadioButtonsGroup from "../layout/RowRadioButtonsGroup";
+import CircularIndeterminate from "../layout/CircularIndeterminate";
 
 const NewsList = () => {
   const newsContext = useContext(NewsContext);
@@ -55,7 +55,7 @@ const NewsList = () => {
       <AlertMessage />
       {!loading && hits.length !== 0 && <RowRadioButtonsGroup />}
       {loading ? (
-        <Spinner />
+        <CircularIndeterminate />
       ) : (
         hits.map((hit) => <NewsItem key={hit.objectID} entry={hit} />)
       )}
