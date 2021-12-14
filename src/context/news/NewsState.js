@@ -26,7 +26,7 @@ const NewsState = (props) => {
     dispatch({ type: LOAD });
     try {
       const res = await fetch(
-        `http://hn.algolia.com/api/v1/${sort}?${state.input}&page=${page}`
+        `https://hn.algolia.com/api/v1/${sort}?${state.input}&page=${page}`
       );
       const newsData = await res.json();
       dispatch({
@@ -47,7 +47,7 @@ const NewsState = (props) => {
     dispatch({ type: LOAD });
     try {
       const res = await fetch(
-        `http://hn.algolia.com/api/v1/${sort}?query=${input}&tags=story&page=${page}`
+        `https://hn.algolia.com/api/v1/${sort}?query=${input}&tags=story&page=${page}`
       );
       const searchData = await res.json();
       dispatch({
