@@ -26,11 +26,18 @@ const Navbar = () => {
       <AppBar position="static">
         <Toolbar>
           <Box
-            style={{ display: "flex", alignItems: "center" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
             color="inherit"
             sx={{ mr: 2 }}
           >
-            <NewspaperOutlinedIcon fontSize="large" />
+            <NewspaperOutlinedIcon
+              fontSize="large"
+              sx={{ boxShadow: "2px 4px 3px rgba(0,0,0,0.3)" }}
+            />
           </Box>
           <Typography
             variant="h5"
@@ -40,7 +47,7 @@ const Navbar = () => {
               flexGrow: 1,
               display: { xs: "none", md: "block" },
               letterSpacing: 8,
-              ml: 5,
+              ml: 4,
               fontWeight: 900,
               fontFamily: "Roboto Slab",
               textShadow: "2px 4px 3px rgba(0,0,0,0.5)",

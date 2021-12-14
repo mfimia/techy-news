@@ -53,10 +53,23 @@ const NewsForm = () => {
       onSubmit={handleSubmit}
       textColor="white"
       style={{
-        display: "flex",
+        display: "inline-flex",
         alignItems: "center",
         justifyContent: "flex-end",
         textColor: "white",
+      }}
+      sx={{
+        position: {
+          xs: {
+            position: "absolute",
+            right: "0",
+          },
+          md: "initial",
+        },
+        width: {
+          xs: "100%",
+          md: "initial",
+        },
       }}
     >
       <StyledTextField
