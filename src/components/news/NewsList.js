@@ -66,7 +66,7 @@ const NewsList = () => {
           onChange={handleChange}
           color="primary"
           size="large"
-          sx={{ mb: 6, mt: 2 }}
+          sx={{ pb: 4, mt: 2 }}
         />
       )}
     </Fragment>

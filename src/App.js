@@ -1,21 +1,41 @@
+import { useMemo, useContext } from "react";
+import DarkContext from "./context/darkMode/DarkContext";
 import NewsList from "./components/news/NewsList";
 import NewsState from "./context/news/NewsState";
 import Navbar from "./components/layout/Navbar";
 import AlertState from "./context/alert/AlertState";
-import DarkState from "./context/darkMode/DarkState";
 import { Container } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
 import "./App.css";
 
 const App = () => {
+  const darkContext = useContext(DarkContext);
+
+  const { mode } = darkContext;
+
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: { mode },
+      }),
+    [mode]
+  );
+
   return (
     <NewsState>
       <AlertState>
-        <DarkState>
-          <Container maxWidth="md">
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Container
+            className={mode === "light" ? "light--mode" : "dark--mode"}
+            maxWidth="md"
+            sx={{ bgcolor: "background.default", color: "text.primary" }}
+          >
             <Navbar />
             <NewsList />
           </Container>
-        </DarkState>
+        </ThemeProvider>
       </AlertState>
     </NewsState>
   );

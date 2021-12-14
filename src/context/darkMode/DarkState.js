@@ -2,15 +2,15 @@ import { useState } from "react";
 import DarkContext from "./DarkContext";
 
 const DarkState = (props) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [mode, setMode] = useState("light");
 
   // Toggle dark mode
-  const toggleDarkMode = () => {
-    setDarkMode((prev) => !prev);
+  const toggleMode = () => {
+    setMode((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
-    <DarkContext.Provider value={{ darkMode, toggleDarkMode }}>
+    <DarkContext.Provider value={{ mode, toggleMode }}>
       {props.children}
     </DarkContext.Provider>
   );

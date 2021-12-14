@@ -13,14 +13,16 @@ import { useContext } from "react";
 const Navbar = () => {
   const darkContext = useContext(DarkContext);
 
-  const { darkMode, toggleDarkMode } = darkContext;
+  const { mode, toggleMode } = darkContext;
 
   const handleClick = () => {
-    toggleDarkMode();
+    toggleMode();
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      sx={{ flexGrow: 1, bgcolor: "background.default", color: "text.primary" }}
+    >
       <AppBar position="static">
         <Toolbar>
           <Box
@@ -45,7 +47,7 @@ const Navbar = () => {
           </Typography>
           <NewsForm />
           <IconButton sx={{ ml: 2 }} onClick={handleClick} color="inherit">
-            {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+            {mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
         </Toolbar>
       </AppBar>
