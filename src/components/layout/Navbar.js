@@ -40,7 +40,10 @@ const Navbar = () => {
               flexGrow: 1,
               display: { xs: "none", md: "block" },
               letterSpacing: 8,
-              ml: 2,
+              ml: 5,
+              fontWeight: 900,
+              fontFamily: "Roboto Slab",
+              textShadow: "2px 4px 3px rgba(0,0,0,0.5)",
             }}
           >
             TECHY NEWS

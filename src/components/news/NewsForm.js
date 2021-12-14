@@ -40,6 +40,7 @@ const NewsForm = () => {
       resetPages();
       clearAlert();
       changeInput(value);
+      setValue("");
     } else {
       setAlert("Please write something!", "warning", true);
     }
