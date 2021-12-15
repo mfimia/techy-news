@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DarkContext from "./DarkContext";
 
 const DarkState = (props) => {
-  const [mode, setMode] = useState(
-    JSON.parse(localStorage.getItem("darkModePref-techyNews") || "light")
-  );
-  localStorage.setItem("darkModePref-techyNews", JSON.stringify(mode));
+  const darkPref = JSON.parse(localStorage.getItem("darkModePref-techyNews"));
+
+  const [mode, setMode] = useState(darkPref || "light");
+
+  useEffect(() => {
+    localStorage.setItem("darkModePref-techyNews", JSON.stringify(mode));
+  }, [mode]);
 
   // Toggle dark mode
   const toggleMode = () => {

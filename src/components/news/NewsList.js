@@ -55,12 +55,13 @@ const NewsList = () => {
       <AlertMessage />
       {!loading && hits.length !== 0 && (
         <Pagination
+          variant="outlined"
           count={nbPages}
           page={currentPage + 1}
           onChange={handleChange}
           color="primary"
           size="medium"
-          sx={{ mt: 2 }}
+          sx={{ mt: 2, ml: 1.5 }}
           style={{ position: "absolute" }}
         />
       )}
@@ -72,12 +73,13 @@ const NewsList = () => {
       )}
       {!loading && hits.length !== 0 && (
         <Pagination
+          variant="outlined"
           count={nbPages}
           page={currentPage + 1}
           onChange={handleChange}
           color="primary"
           size="large"
-          sx={{ pb: 4, mt: 2 }}
+          sx={{ pb: 4, mt: 1, ml: 2 }}
         />
       )}
     </Fragment>
