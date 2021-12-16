@@ -61,7 +61,14 @@ const NewsList = () => {
           onChange={handleChange}
           color="primary"
           size="medium"
-          sx={{ mt: 2, ml: 1.5 }}
+          sx={{
+            mt: 2,
+            ml: 1.5,
+            display: {
+              xs: "none",
+              md: "block",
+            },
+          }}
           style={{ position: "absolute" }}
         />
       )}
@@ -78,8 +85,15 @@ const NewsList = () => {
           page={currentPage + 1}
           onChange={handleChange}
           color="primary"
-          size="large"
-          sx={{ pb: 4, mt: 1, ml: 2 }}
+          sx={{
+            pb: 4,
+            mt: 1,
+            ml: 2,
+            size: {
+              xs: "small",
+              sm: "large",
+            },
+          }}
         />
       )}
     </Fragment>

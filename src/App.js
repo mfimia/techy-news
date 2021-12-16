@@ -30,7 +30,13 @@ const App = () => {
           <Container
             className={mode === "light" ? "light--mode" : "dark--mode"}
             maxWidth="md"
-            sx={{ bgcolor: "background.default", color: "text.primary" }}
+            sx={{
+              bgcolor: "background.default",
+              color: "text.primary",
+              p: {
+                xs: 0,
+              },
+            }}
           >
             <Navbar />
             <NewsList />

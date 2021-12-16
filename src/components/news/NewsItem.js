@@ -13,7 +13,7 @@ const NewsItem = ({ entry }) => {
           <Tooltip
             enterDelay={500}
             TransitionComponent={Zoom}
-            title={url}
+            title={url || title}
             arrow
           >
             <Link underline="none" href={url}>
