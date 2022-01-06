@@ -94,14 +94,16 @@ const NewsState = (props) => {
     });
   };
 
+  const { news, input, loading, currentPage, sort } = state;
+
   return (
     <NewsContext.Provider
       value={{
-        news: state.news,
-        input: state.input,
-        loading: state.loading,
-        currentPage: state.currentPage,
-        sort: state.sort,
+        news,
+        input,
+        loading,
+        currentPage,
+        sort,
         getNews,
         searchNews,
         changePage,
