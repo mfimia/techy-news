@@ -28,7 +28,6 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Container
-            className={mode === "light" ? "light--mode" : "dark--mode"}
             maxWidth="md"
             sx={{
               bgcolor: "background.default",
